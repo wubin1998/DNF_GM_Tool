@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title= title
+    != css('style')
+    link(rel="stylesheet", href="/javascripts/layui/css/layui.css")
+    script(src="/javascripts/layui/layui.all.js")
+  body
+    include ./common/navbar
+    block content

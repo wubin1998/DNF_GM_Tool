@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title= title
+    != css('style')
+    link(rel="stylesheet", href="/javascripts/layui/css/layui.css")
+    != css('session/style')
+    != js('lib/jquery.min')
+    script(src="/javascripts/layui/layui.all.js")
+  body
+    .session-box
+      block content
