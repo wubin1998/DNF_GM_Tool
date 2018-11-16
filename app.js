@@ -4,15 +4,25 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 
 var index = require('./routes/index');
 
 var app = express();
 
+// session
+app.use(session({
+  secret: 'abcdefg1234567890',
+  resave: true,
+  saveUninitialized: false,
+  cookie: { maxAge : null }
+}))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// assets module
 app.use(require("connect-assets")({
   bundle: true,
   fingerprinting: true,
