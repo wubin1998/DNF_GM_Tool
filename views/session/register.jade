@@ -7,19 +7,21 @@ block content
       div.layui-form-item(pane)
         label.layui-form-label 账号
         div.layui-input-block
-          input.layui-input(type="text", placeholder="请输入账号")
+          input.layui-input(type="text", placeholder="请输入账号", name="account")
 
       div.layui-form-item(pane)
         label.layui-form-label 密码
         div.layui-input-block
-          input.layui-input(type="password", placeholder="请输入密码")
+          input.layui-input(type="password", placeholder="请输入密码", name="password")
           
       div.layui-form-item(pane)
         label.layui-form-label 确认密码
         div.layui-input-block
-          input.layui-input(type="password", placeholder="请确认密码")
+          input.layui-input(type="password", placeholder="请确认密码", name="re_password")
 
       div.layui-form-item(pane)
         div.layui-input-block
-          button.layui-btn 完成注册
+          button.layui-btn.js-register-btn 完成注册
           a.layui-btn.layui-btn-primary(href="/login") 返回登录
+
+  != js('session/register')

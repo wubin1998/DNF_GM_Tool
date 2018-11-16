@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var RegisterController = require('../controller/RegisterController')
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -20,4 +20,6 @@ router.get('/register', (req, res) => {
     title: "注册"
   })
 })
+
+router.post('/register', RegisterController.register)
 module.exports = router;
