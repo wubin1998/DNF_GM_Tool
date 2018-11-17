@@ -17,5 +17,6 @@ block content
       div.layui-form-item(pane)
         div.layui-input-block
           button.layui-btn.js-login-btn 登录
-          a.layui-btn.layui-btn-primary(href="/register") 注册
+          if isReg
+            a.layui-btn.layui-btn-primary(href="/register") 注册
   != js('session/login')

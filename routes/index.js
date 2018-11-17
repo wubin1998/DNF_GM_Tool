@@ -1,10 +1,16 @@
 let express = require('express');
 let router = express.Router();
+let fs = require('fs');
+let path = require('path')
 let RegisterController = require('../controller/RegisterController')
 let LoginController = require('../controller/LoginController')
 let AccountController = require('../controller/AccountController')
 let CreditController = require('../controller/CreditController')
 
+router.use( (req, res, next) => {
+  res.locals.isReg = fs.existsSync(path.resolve('__dirname', '../') + '/reg')
+  next();
+})
 
 // 登录
 router.route('/login')
@@ -19,6 +25,7 @@ router.route('/login')
 // 注册
 router.route('/register')
 .get((req, res) => {
+  if (!res.locals.isReg) return res.redirect('/login')
   res.render("session/register", {
     title: "注册"
   })
@@ -61,6 +68,8 @@ router.route('/account')
 .get( (req, res, next) => {
   res.render("account/index", { title: "账号管理" })
 })
+
+router.get('/check_account', LoginController.check_account)
 
 // 添加账号
 router.route('/account/new')

@@ -15,6 +15,7 @@ class Index extends Common
       
     $(document).on 'click', '.js-show', -> layer.msg "功能开发中"
         
+    $(document).on 'click', '.js-login', (event) => @login event
 
   tableRender: () ->
     @table.render
@@ -31,8 +32,8 @@ class Index extends Common
           title: '账号'
         },
         {
-          field: '权限'
-          title: 'type'
+          field: 'type'
+          title: '权限'
           templet: (i) ->
             if i.qq is "GM_master"
               return "GM"
@@ -72,6 +73,16 @@ class Index extends Common
       where:
         account: account 
     
+  login: (event) -> 
+    index = $(event.target).parents('tr').attr('data-index')
+    uid = @datas[index].UID
+    layer.confirm "是否登录此账号操作？", (layero) ->
+      datas = 
+        uid: uid
+      $.get '/check_account', datas, (res) ->
+        if res.code is 200
+          return location.href = ""
+        layer.msg res.msg
 
 i = new Index
 i.init()
