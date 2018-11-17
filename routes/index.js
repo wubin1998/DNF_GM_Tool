@@ -34,11 +34,12 @@ router.get('/logout', (req, res) => {
 // 登录验证
 router.use( (req, res, next) => {
   if (!req.session.account) return res.redirect('/login')
+  res.locals.account = req.session.account;
   next();
 })
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('home/index', { title: 'DNF GM后台管理首页' });
 });
 
 module.exports = router;
