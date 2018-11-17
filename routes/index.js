@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var RegisterController = require('../controller/RegisterController')
-var LoginController = require('../controller/LoginController')
+let express = require('express');
+let router = express.Router();
+let RegisterController = require('../controller/RegisterController')
+let LoginController = require('../controller/LoginController')
+let AccountController = require('../controller/AccountController')
 
 
 // 登录
@@ -38,14 +39,25 @@ router.use( (req, res, next) => {
   next();
 })
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('home/index', { title: '首页' });
 });
 
+
+router.route('/account')
+.get( (req, res, next) => {
+  res.render("account/index", { title: "账号管理" })
+})
+
+// 添加账号
 router.route('/account/new')
 .get( (req, res, next) => {
   res.render('account/new', { title: '添加账号' });
 })
 .post(RegisterController.addAccount)
+
+router.get("/account/list", AccountController.index)
+
+router.delete("/account", AccountController.delete)
 
 module.exports = router;
