@@ -4,6 +4,8 @@ let md5 = require('md5');
 
 module.exports = {
   register: (req, res, next) => {
+    if (!res.locals.isReg) return res.redirect('/login')
+    
     let datas = req.body;
     let sql = `select accountname from d_taiwan.accounts where accountname='${datas.account}'`;
 
