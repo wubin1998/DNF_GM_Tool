@@ -1,23 +1,28 @@
 class Login
   constructor: () ->
-    
+    @password = $('input[name="password"]')
+    @account  = $('input[name="account"]')
+
   init: () ->
     $('.js-login-btn').on 'click', => @clickLogin() 
+    
+    @password.on 'keydown', (event) =>
+      if event.keyCode is 13
+        @clickLogin()
   
   clickLogin: () ->
     datas = 
-      account: $('input[name="account"]').val()
-      password: $('input[name="password"]').val()
+      account: @account.val()
+      password: @password.val()
 
     load = layer.load(2)
     
-    $.post "/login", datas, (res) ->
+    $.post "/login", datas, (res) =>
       layer.close load
       if res.code is 200
-        return layer.alert res.msg,
-          yes: () ->
-            location.href = '/'
+        return location.href = '/'
       layer.alert res.msg
+      @password.val("").focus()
 
 
 

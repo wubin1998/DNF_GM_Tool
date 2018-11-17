@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  div.layui-card
+    div.layui-card-header #{title}
+    div.layui-card-body
+      div.layui-form-item.mt-20.form-width(pane)
+        label.layui-form-label 账号
+        div.layui-input-block
+          input.layui-input(type="text", placeholder="请输入账号", name="account") 
+
+      div.layui-form-item.form-width(pane)
+        label.layui-form-label 密码
+        div.layui-input-block
+          input.layui-input(type="password", placeholder="请输入密码", name="password")
+          
+      div.layui-form-item.form-width(pane)
+        label.layui-form-label 确认密码
+        div.layui-input-block
+          input.layui-input(type="password", placeholder="请确认密码", name="re_password")
+      
+      div.layui-form-item.form-width
+        label.layui-form-label 权限
+        div.layui-input-block
+          label
+            input(type="radio", name="type", value="0", title="普通" checked)
+            |普通
+          label
+            input(type="radio", name="type", value="1", title="VIP")
+            |VIP
+          label
+            input(type="radio", name="type", value="2", title="GM")
+            |GM
+
+      div.layui-form-item.form-width
+        div.layui-input-block
+          button.layui-btn.js-register-btn 添加账号
+  != js("account/new")

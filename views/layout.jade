@@ -1,10 +1,14 @@
 doctype html
 html
   head
-    title= title
+    title= 'DNF GM后台管理 - ' + title
     != css('style')
     link(rel="stylesheet", href="/javascripts/layui/css/layui.css")
+    != js('lib/jquery.min')
     script(src="/javascripts/layui/layui.all.js")
   body
     include ./common/navbar
-    block content
+
+    div.layui-container
+      div.row
+        block content

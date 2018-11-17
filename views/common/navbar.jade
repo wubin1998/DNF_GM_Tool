@@ -4,13 +4,13 @@ div.layui-layout.layui-layout-admin
     div.layui-container
       ul.layui-nav.layui-layout-right
         li.layui-nav-item
-          a(href="") 用户管理
+          a(href="/account") 用户管理
         li.layui-nav-item
-          a(href="") 添加账号
+          a(href="/account/new") 添加账号
         li.layui-nav-item
           a(href="javascript:;") 账户：#{account}
           dl.layui-nav-child(lay-unselect="")
             dd
               a(href="javascript:;") 修改信息
             dd
-              a(href="javascript:;") 退出
+              a(href="/logout") 退出

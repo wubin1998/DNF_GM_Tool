@@ -14,7 +14,7 @@ var app = express();
 app.use(session({
   secret: 'abcdefg1234567890',
   resave: true,
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: { maxAge : null }
 }))
 

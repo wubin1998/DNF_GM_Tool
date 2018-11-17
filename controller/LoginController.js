@@ -5,7 +5,7 @@ module.exports = {
   login: (req, res) => {
     let datas = req.body;
 
-    let sql = `select accountname,password from d_taiwan.accounts where accountname='${datas.account}' and password='${md5(datas.password)}'`;
+    let sql = `select UID,accountname,password from d_taiwan.accounts where accountname='${datas.account}' and password='${md5(datas.password)}' limit 1`;
 
     db(sql).then( result => {
       if (result.length <= 0) {
@@ -15,7 +15,8 @@ module.exports = {
         })
       }
 
-      req.session.account = datas.account
+      req.session.account = result[0].accountname;
+      req.session.uid = result[0].UID;
 
       return res.json({
         code: 200,

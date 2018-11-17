@@ -39,7 +39,13 @@ router.use( (req, res, next) => {
 })
 
 router.get('/', function(req, res, next) {
-  res.render('home/index', { title: 'DNF GM后台管理首页' });
+  res.render('home/index', { title: '首页' });
 });
+
+router.route('/account/new')
+.get( (req, res, next) => {
+  res.render('account/new', { title: '添加账号' });
+})
+.post(RegisterController.addAccount)
 
 module.exports = router;
