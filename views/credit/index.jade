@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  div.layui-card
+    div.layui-card-header #{title}
+    div.layui-card-body
+      label.layui-form-label 充值类型
+      div.inline-block(style="width: 200px;")
+        select.js-type(name="type" lay-verify="")
+          option(value="0") D币
+          option(value="1") D点
+          option(value="2") 金币
+          option(value="3") 时装币
+          option(value="4") SP点
+          option(value="5") TP点
+          option(value="6") QP点
+
+      div.layui-form-item.mt-20.form-width(pane)
+        label.layui-form-label 充值数量
+        div.layui-input-block
+          input.layui-input.js-num(type="number", placeholder="充值数量", name="account")
+      div.layui-form-item.mt-20.form-width(pane)
+        div.layui-input-block
+          button.layui-btn.js-sure 充值
+  != js("credit/index")

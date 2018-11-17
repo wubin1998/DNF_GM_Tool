@@ -3,6 +3,7 @@ let router = express.Router();
 let RegisterController = require('../controller/RegisterController')
 let LoginController = require('../controller/LoginController')
 let AccountController = require('../controller/AccountController')
+let CreditController = require('../controller/CreditController')
 
 
 // 登录
@@ -80,4 +81,10 @@ router.get('/role/select', AccountController.role_select)
 
 router.get('/role/list', AccountController.role)
 
+router.get("/credit", (req, res, next) => {
+  res.render("credit/index", { title: "充值" })
+})
+
+
+router.post("/credit", CreditController.credit)
 module.exports = router;
