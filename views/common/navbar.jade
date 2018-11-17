@@ -1,14 +1,18 @@
-
 div.layui-layout.layui-layout-admin
   div.layui-header
     div.layui-container
       ul.layui-nav.layui-layout-right
         li.layui-nav-item
-          a(href="/account") 用户管理
+          a(href="/role") 角色选择
+        li.layui-nav-item
+          a(href="/account") 账号管理
         li.layui-nav-item
           a(href="/account/new") 添加账号
+        if mid
+          li.layui-nav-item
+            a.js-mid(href="javascript:;", data-mid="#{mid}") 当前角色：#{role_name}
         li.layui-nav-item
-          a(href="javascript:;") 账户：#{account}
+          a(href="javascript:;") 账号：#{account}
           dl.layui-nav-child(lay-unselect="")
             dd
               a(href="javascript:;") 修改信息

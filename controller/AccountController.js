@@ -39,5 +39,30 @@ module.exports = {
         msg: "删除成功"
       })
     })
+  },
+
+  role: (req, res, next) => {
+    let uid = req.session.uid
+    let sql = `select charac_no,charac_name,job,lev,grow_type from taiwan_cain.charac_info where m_id=${uid} and delete_flag<>1 order by charac_no asc`
+    
+    db(sql)
+    .then( result => {
+      res.json({
+        code: 0,
+        data: result
+      })
+    })
+  },
+
+  role_select: (req, res, next) => {
+    let mid = req.query.mid;
+    let role_name = req.query.role_name;
+    req.session.mid = mid;
+    req.session.role_name = role_name;
+
+    res.json({
+      code: 200,
+      msg: "选择角色成功"
+    })
   }
 }

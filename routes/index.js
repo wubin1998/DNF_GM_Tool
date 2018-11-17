@@ -27,6 +27,9 @@ router.route('/register')
 // 退出登录
 router.get('/logout', (req, res) => {
   req.session.account = null;
+  req.session.mid = null;
+  req.session.uid = null;
+  req.session.role_name = null;
   res.redirect('/login')
 })
 
@@ -36,6 +39,15 @@ router.get('/logout', (req, res) => {
 router.use( (req, res, next) => {
   if (!req.session.account) return res.redirect('/login')
   res.locals.account = req.session.account;
+  if (req.session.role_name) {
+    res.locals.role_name = req.session.role_name
+  }
+  if (req.session.mid) {
+    res.locals.mid = req.session.mid
+  }
+  if (req.session.uid) {
+    res.locals.uid = req.session.uid
+  }
   next();
 })
 
@@ -59,5 +71,13 @@ router.route('/account/new')
 router.get("/account/list", AccountController.index)
 
 router.delete("/account", AccountController.delete)
+
+router.get('/role', (req, res, next) => {
+  res.render("account/role", { title: "角色选择" })
+})
+
+router.get('/role/select', AccountController.role_select)
+
+router.get('/role/list', AccountController.role)
 
 module.exports = router;

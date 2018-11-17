@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  div.layui-card
+    div.layui-card-header #{title}
+    div.layui-card-body
+      table#role_table
+
+  script#toolbar(type="text/html")
+    a.layui-btn.layui-btn-xs.js-select 选择角色
+  != js("account/role")
