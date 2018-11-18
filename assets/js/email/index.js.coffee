@@ -1,6 +1,6 @@
 #= require ../common/index
 
-class Credit extends Common
+class Email extends Common
   constructor: () ->
     super()
   init: () ->
@@ -20,5 +20,5 @@ class Credit extends Common
       layer.close(load)
       layer.alert res.msg
 
-i = new Credit
+i = new Email
 i.init()

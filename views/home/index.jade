@@ -1,4 +1,12 @@
 extends ../layout
 
 block content
+  div.layui-card
+    div.layui-card-header #{title}
+    div.layui-card-body
+      p 使用说明：
+      p 添加账号，添加的账号可以作为游戏登录，选择GM可以作为后台账号。
+      p 账号管理，列出所有账号，可删除，点击登录账号可以在角色选择获取角色
+      p 角色选择，列出当前后台登录的账号下的角色，点击选择角色可以使用充值、邮件、工具功能。
+      p 充值、邮件、工具操作是根据当前右上角显示的账号和当前角色进行修改的。
   != js('home/index')
