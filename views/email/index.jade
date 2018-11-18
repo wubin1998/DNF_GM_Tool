@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  div.layui-card
+    div.layui-card-header #{title}
+    div.layui-card-body
+      label.layui-form-label 物品代码
+      div.inline-block(style="width: 340px;")
+        input.layui-input.js-item-id(type="text", placeholder="物品代码", value="0")
+
+      div.layui-form-item.mt-20.form-width(pane)
+        label.layui-form-label 数量
+        div.layui-input-block
+          input.layui-input.js-item-num(type="number", placeholder="数量", value="1")
+          
+      div.layui-form-item.mt-20.form-width(pane)
+        label.layui-form-label 金币
+        div.layui-input-block
+          input.layui-input.js-coin(type="number", placeholder="金币", value="0")
+      
+
+      div.layui-form-item.mt-20.form-width(pane)
+        label.layui-form-label 强化
+        div.layui-input-block
+          input.layui-input.js-strong(type="number", placeholder="强化", value="0")
+          
+      div.layui-form-item.mt-20.form-width(pane)
+        div.layui-input-block
+          button.layui-btn.js-send 发送
+  != js("email/index")

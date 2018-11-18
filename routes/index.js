@@ -6,6 +6,7 @@ let RegisterController = require('../controller/RegisterController')
 let LoginController = require('../controller/LoginController')
 let AccountController = require('../controller/AccountController')
 let CreditController = require('../controller/CreditController')
+let EmailController = require('../controller/EmailController')
 
 router.use( (req, res, next) => {
   res.locals.isReg = fs.existsSync(path.resolve('__dirname', '../') + '/reg')
@@ -96,4 +97,11 @@ router.get("/credit", (req, res, next) => {
 
 
 router.post("/credit", CreditController.credit)
+
+// 邮件
+router.get('/email', (req, res, next) => {
+  res.render("email/index", { title: "邮件" })
+})
+
+router.post('/email', EmailController.postEmail)
 module.exports = router;
