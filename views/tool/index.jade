@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  div.layui-card
+    div.layui-card-header #{title}
+    div.layui-card-body
+      button.layui-btn.js-tool-btn(data-type="0") 清空邮件
+      button.layui-btn.js-tool-btn(data-type="1") 清空时装栏
+      button.layui-btn.js-tool-btn(data-type="2") 清空宠物
+      button.layui-btn.js-tool-btn(data-type="3") 解除创建角色限制
+  != js("tool/index")

@@ -7,6 +7,7 @@ let LoginController = require('../controller/LoginController')
 let AccountController = require('../controller/AccountController')
 let CreditController = require('../controller/CreditController')
 let EmailController = require('../controller/EmailController')
+let TollController = require('../controller/TollController')
 
 router.use( (req, res, next) => {
   res.locals.isReg = fs.existsSync(path.resolve('__dirname', '../') + '/reg')
@@ -104,4 +105,11 @@ router.get('/email', (req, res, next) => {
 })
 
 router.post('/email', EmailController.postEmail)
+
+// 工具
+router.get('/tool', (req, res, next) => {
+  res.render('tool/index', { title: "工具" })
+})
+
+router.post('/tool', TollController.index)
 module.exports = router;
